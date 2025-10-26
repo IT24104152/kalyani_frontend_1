@@ -1,14 +1,14 @@
 // Comprehensive API Client using axios - Single source of truth for all API calls
 import axios, { AxiosInstance, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 
-const API_BASE_URL = (import.meta as any).env?.VITE_API_BASE_URL || '/api';
+const API_BASE_URL = (import.meta as any).env?.VITE_API_BASE_URL || 'https://kalyanibackend-production.up.railway.app';
 
 // DTOs
 export interface CategoryDTO {
   categoryId: number;
   name: string;
 }
-
+  
 export interface MetalDTO {
   metalId: number;
   metalType: string;
