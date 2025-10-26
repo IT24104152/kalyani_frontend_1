@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Base URL from environment variable or default to backend port
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://kalyanibackend-production.up.railway.app';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8086';
 
 // Create axios instance with default config
 const axiosInstance = axios.create({
