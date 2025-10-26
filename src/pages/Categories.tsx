@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import Header from "@/components/Header";
@@ -44,24 +44,24 @@ const JewelleryCategories = () => {
 
   // Filter categories based on search term
   const filteredCategories = categories.filter(category =>
-    category.categoryName.toLowerCase().includes(searchTerm.toLowerCase())
+    category.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Get category slug from category name (convert to lowercase and replace spaces with hyphens)
-  const getCategorySlug = (categoryName: string) => {
-    return categoryName.toLowerCase().replace(/\s+/g, '-');
+  // Get category slug from category name
+  const getCategorySlug = (name: string) => {
+    return name.toLowerCase().replace(/\s+/g, '-');
   };
 
   // Get icon for category
-  const getCategoryIcon = (categoryName: string) => {
-    const slug = getCategorySlug(categoryName);
+  const getCategoryIcon = (name: string) => {
+    const slug = getCategorySlug(name);
     const IconComponent = categoryIcons[slug] || categoryIcons.default;
     return IconComponent;
   };
 
   // Get image for category
-  const getCategoryImage = (categoryName: string) => {
-    const slug = getCategorySlug(categoryName);
+  const getCategoryImage = (name: string) => {
+    const slug = getCategorySlug(name);
     return categoryImages[slug] || "/placeholder.svg";
   };
 
@@ -145,9 +145,9 @@ const JewelleryCategories = () => {
             {!isLoading && (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredCategories.map((category) => {
-                  const IconComponent = getCategoryIcon(category.categoryName);
-                  const categoryImage = getCategoryImage(category.categoryName);
-                  const categorySlug = getCategorySlug(category.categoryName);
+                  const IconComponent = getCategoryIcon(category.name);
+                  const categoryImage = getCategoryImage(category.name);
+                  const categorySlug = getCategorySlug(category.name);
 
                   return (
                     <Link
@@ -159,10 +159,9 @@ const JewelleryCategories = () => {
                         <div className="aspect-square overflow-hidden bg-muted relative">
                           <img
                             src={categoryImage}
-                            alt={category.categoryName}
+                            alt={category.name}
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                             onError={(e) => {
-                              // Fallback to placeholder if image fails to load
                               (e.target as HTMLImageElement).src = "/placeholder.svg";
                             }}
                           />
@@ -174,7 +173,7 @@ const JewelleryCategories = () => {
                               </div>
                               <div>
                                 <h3 className="font-display font-semibold text-xl text-white group-hover:text-primary-foreground transition-colors">
-                                  {category.categoryName}
+                                  {category.name}
                                 </h3>
                                 <p className="text-white/80 text-sm">
                                   Explore Collection
