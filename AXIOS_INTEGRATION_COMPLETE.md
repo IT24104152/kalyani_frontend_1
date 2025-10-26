@@ -8,7 +8,7 @@ Successfully migrated the entire frontend codebase to use a shared axios instanc
 ## ✅ 1. Shared Axios Instance Implementation
 
 ### Created: `totalFrontend-1/src/lib/axios.ts`
-- **Base URL**: `http://localhost:8086` (configurable via `VITE_API_BASE_URL`)
+- **Base URL**: `https://kalyanibackend-production.up.railway.app` (configurable via `VITE_API_BASE_URL`)
 - **Request Interceptor**: Automatically adds JWT token from `localStorage` to all requests
 - **Response Interceptor**: Handles 401 errors and clears authentication tokens
 - **Headers**: JSON content-type by default
@@ -27,23 +27,23 @@ Successfully migrated the entire frontend codebase to use a shared axios instanc
 
 ### Authentication Pages
 1. **`UserLogin.tsx`**
-   - ❌ Before: `axios.post("http://localhost:8086/auth/login")`
+   - ❌ Before: `axios.post("https://kalyanibackend-production.up.railway.app/auth/login")`
    - ✅ After: `axiosInstance.post("/auth/login")`
    - Stores JWT token in localStorage
 
 2. **`UserRegister.tsx`**
-   - ❌ Before: `axios.post("http://localhost:8086/auth/register")`
+   - ❌ Before: `axios.post("https://kalyanibackend-production.up.railway.app/auth/register")`
    - ✅ After: `axiosInstance.post("/auth/register")`
    - Fixed duplicate `e.preventDefault()` call
 
 ### Public Pages
 3. **`JewelleryRepairs.tsx`**
-   - ❌ Before: `axios.post("http://localhost:8086/api/serviceticket/create")`
+   - ❌ Before: `axios.post("https://kalyanibackend-production.up.railway.app/api/serviceticket/create")`
    - ✅ After: `axiosInstance.post("/api/serviceticket/create")`
    - Removed manual header configuration
 
 4. **`CustomDesign.tsx`**
-   - ❌ Before: `axios.post("http://localhost:8086/api/customdesign/create")`
+   - ❌ Before: `axios.post("https://kalyanibackend-production.up.railway.app/api/customdesign/create")`
    - ✅ After: `axiosInstance.post("/api/customdesign/create")`
    - Removed manual header configuration
 
@@ -268,14 +268,14 @@ deleteGem       → DELETE /api/gems/{id}
 ```bash
 cd CODEXA-jewellery-backend-main
 ./start-backend.bat
-# Backend runs on http://localhost:8086
+# Backend runs onhttps://kalyanibackend-production.up.railway.app
 ```
 
 ### 2. Start Frontend
 ```bash
 cd totalFrontend-1
 npm run dev
-# Frontend runs on http://localhost:8080
+# Frontend runs on https://kalyanibackend-production.up.railway.app
 ```
 
 ### 3. Test Flow
@@ -293,7 +293,7 @@ npm run dev
 ### CORS Settings ✅
 Backend already configured for frontend port 8080:
 ```java
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://:8080")
 ```
 
 ### Security Config ✅

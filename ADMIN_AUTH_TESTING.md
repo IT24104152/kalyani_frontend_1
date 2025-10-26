@@ -10,7 +10,7 @@ The admin routes are now protected and require authentication. Only authenticate
 - **With Authentication**: Users can access admin dashboard and all admin features
 
 ### 2. Admin Login
-- **URL**: `http://localhost:5174/admin/login`
+- **URL**: `https://kalyanibackend-production.up.railway.app/admin/login`
 - **Access**: Navigate directly to the URL (admin login is not prominently displayed on the public website for security reasons)
 
 ### 3. Test Credentials
@@ -35,7 +35,7 @@ All these routes now require admin authentication:
 ### 5. Testing Steps
 
 1. **Test Unauthorized Access**:
-   - Navigate to `http://localhost:5174/admin`
+   - Navigate to `https://kalyanibackend-production.up.railway.app/admin`
    - Should redirect to `/admin/login`
 
 2. **Test Login**:
